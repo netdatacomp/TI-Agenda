@@ -1,0 +1,14 @@
+[project]
+name = "ti-agenda-api"
+version = "3.0.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "pydantic",
+]
+
+[dependency-groups]
+dev = [
+    "workers-py",
+    "workers-runtime-sdk",
+]

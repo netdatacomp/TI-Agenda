@@ -1,0 +1,12 @@
+name = "ti-agenda-api"
+main = "main.py"
+compatibility_date = "2026-09-29"
+compatibility_flags = ["python_workers"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ti-agenda-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+# Não coloque o secret aqui. Use: npx wrangler secret put TI_AGENDA_SECRET
