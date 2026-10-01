@@ -6,7 +6,7 @@ compatibility_flags = ["python_workers"]
 [[d1_databases]]
 binding = "DB"
 database_name = "ti-agenda-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "fc4648fb-e635-4db8-8ee0-cf9eb979d972"
 
 [vars]
 # Não coloque o secret aqui. Use: npx wrangler secret put TI_AGENDA_SECRET
