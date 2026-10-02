@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.db
+ti_agenda.db
+.env
+.env.*
+node_modules/
+dist/
+.vite/
+*.log
+.DS_Store
+Thumbs.db
+
+# Cloudflare / Wrangler
+.wrangler/
+worker/.wrangler/
+worker/python_modules/
+
+# Arquivos de backup locais
+*.backup
+*.antes-limpeza
+*.baguncado

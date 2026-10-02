@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TI Agenda v3 – Sistema de Suporte Técnico</title>
+  <meta name="description" content="Sistema completo de agendamento e gestão de chamados de suporte técnico. Vue 3 + FastAPI.">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --success: #22c55e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* Header */
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #334155;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    .logo span { color: var(--primary); }
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      border: 1px solid #475569;
+      color: var(--text);
+      margin-left: 0.8rem;
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    /* Hero */
+    .hero {
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    /* Features */
+    .features {
+      padding: 4rem 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 3rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      color: white;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    /* Tech */
+    .tech {
+      padding: 4rem 0;
+      background: #1e293b;
+      border-radius: 16px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .tech-item {
+      background: #0f172a;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      border: 1px solid #334155;
+    }
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 4rem 0 5rem;
+    }
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    /* Footer */
+    footer {
+      border-top: 1px solid #334155;
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .nav { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">TI <span>Agenda</span> v3</a>
+      <div>
+        <a href="https://github.com/netdatacomp/TI-Agenda" class="btn btn-outline" target="_blank">GitHub</a>
+        <a href="https://github.com/netdatacomp/TI-Agenda/archive/refs/heads/main.zip" class="btn btn-primary">Download</a>
+      </div>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="container">
+      <h1>Sistema de Agendamento<br>de Suporte Técnico</h1>
+      <p>
+        Gerencie chamados, técnicos e solicitantes com calendário mensal, 
+        autenticação por perfis e número automático de chamado.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://github.com/netdatacomp/TI-Agenda" class="btn btn-primary" target="_blank">Ver no GitHub</a>
+        <a href="https://github.com/netdatacomp/TI-Agenda/archive/refs/heads/main.zip" class="btn btn-outline">Baixar Código</a>
+      </div>
+    </div>
+  </section>
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Funcionalidades</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🔐</div>
+          <h3>Autenticação por Perfis</h3>
+          <p>Administrador, Técnico e Solicitante com permissões diferentes e controlo de acesso.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📅</div>
+          <h3>Calendário Mensal</h3>
+          <p>Visualize e gerencie todos os agendamentos de forma clara e intuitiva.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎫</div>
+          <h3>Número Automático de Chamado</h3>
+          <p>Cada solicitação recebe um número único gerado automaticamente.</p>
+        </div>
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>Gestão de Utilizadores</h3>
+          <p>Cadastro, desativação e alteração de senha com controlo total do administrador.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔍</div>
+          <h3>Busca e Status</h3>
+          <p>Pesquise chamados rapidamente e acompanhe o status de cada atendimento.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Rápido e Moderno</h3>
+          <p>Frontend em Vue 3 + Vite e backend em FastAPI para alta performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="tech">
+      <h2>Tecnologias</h2>
+      <div class="tech-list">
+        <span class="tech-item">Vue 3</span>
+        <span class="tech-item">Vite</span>
+        <span class="tech-item">FastAPI</span>
+        <span class="tech-item">SQLite</span>
+        <span class="tech-item">Cloudflare D1</span>
+        <span class="tech-item">Cloudflare Workers</span>
+      </div>
+    </div>
+  </section>
+  <section class="cta">
+    <div class="container">
+      <h2>Pronto para usar?</h2>
+      <p>Baixe o código e execute localmente em poucos minutos com os scripts .bat incluídos.</p>
+      <a href="https://github.com/netdatacomp/TI-Agenda/archive/refs/heads/main.zip" class="btn btn-primary">Download ZIP</a>
+      <a href="https://github.com/netdatacomp/TI-Agenda" class="btn btn-outline" target="_blank" style="margin-left: 0.8rem;">Ver Código Fonte</a>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <p>
+        TI Agenda v3 · Desenvolvido por 
+        <a href="https://github.com/netdatacomp" target="_blank">netdatacomp</a> · 
+        <a href="https://github.com/netdatacomp/TI-Agenda" target="_blank">Código no GitHub</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
